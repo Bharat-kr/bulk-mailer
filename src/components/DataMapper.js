@@ -1,18 +1,18 @@
 "use client";
-import { list } from "@/utils/dummy_data";
+import { useFile } from "@/context/FileContext";
 import { useEffect, useState } from "react";
 
 export default function DataMapper() {
-  const [data, setData] = useState(list);
+  const { mailList } = useFile();
   const [keys, setKeys] = useState([]);
 
   useEffect(() => {
     let arr = [];
-    Object.keys(data[0]).forEach((key) => {
+    Object.keys(mailList[0]).forEach((key) => {
       arr.push(key);
     });
     setKeys(arr);
-  }, [data]);
+  }, [mailList]);
 
   return (
     <div className="w-full overflow-y-auto">
@@ -30,7 +30,7 @@ export default function DataMapper() {
             </tr>
           </thead>
           <tbody>
-            {data.map((item, idx) => {
+            {mailList.map((item, idx) => {
               return (
                 <tr
                   key={JSON.stringify(item) + `${idx}`}
@@ -39,7 +39,7 @@ export default function DataMapper() {
                   {keys.map((key) => {
                     return (
                       <td key={item[key]} className="px-6 py-4">
-                        {item[key]}
+                        {`${item[key]}`}
                       </td>
                     );
                   })}

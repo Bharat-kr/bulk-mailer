@@ -1,12 +1,13 @@
 "use client";
 const { createContext, useContext, useState, useEffect } = require("react");
+import { list } from "@/utils/dummy_data";
 import csv from "csvtojson";
 
 const FileContext = createContext();
 
 const FileProvider = ({ children }) => {
   const [selectedFile, setSelectedFile] = useState();
-  const [mailList, setMailList] = useState([]);
+  const [mailList, setMailList] = useState(list);
 
   useEffect(() => {
     const init = async () => {

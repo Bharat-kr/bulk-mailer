@@ -1,9 +1,37 @@
 "use client";
 import DataMapper from "@/components/DataMapper";
 import { useFile } from "@/context/FileContext";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const { setSelectedFile, selectedFile, mailList } = useFile();
+  const { setSelectedFile, selectedFile, mailList, setMailList } = useFile();
+
+  const [taskId, setTaskId] = useState("");
+  const clickHandler = async () => {
+    try {
+      const result = await axios.post("/api/email", {
+        leads: mailList,
+        email: "kumabharat123@gmail.com",
+        password: "qvlhoprolsxpcrvr",
+      });
+      console.log(result.data);
+      setMailList(result.data.leads);
+      setTaskId(result.data.task_id);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const refresh = async () => {
+    try {
+      const result = await axios.get(`/api/tasks/${taskId}`);
+      setMailList(result.data.leads)
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <main className="flex min-h-screen flex-col items-center p-24 h-full">
@@ -52,9 +80,17 @@ export default function Home() {
 
       <button
         type="button"
+        onClick={clickHandler}
         className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
       >
         Next
+      </button>
+      <button
+        type="button"
+        onClick={refresh}
+        className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+      >
+        Refresh
       </button>
     </main>
   );
