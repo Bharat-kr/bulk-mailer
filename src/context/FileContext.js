@@ -1,11 +1,13 @@
 "use client";
 const { createContext, useContext, useState, useEffect } = require("react");
 import { list } from "@/utils/dummy_data";
+import { PAGE_STATES } from "@/utils/enums";
 import csv from "csvtojson";
 
 const FileContext = createContext();
 
 const FileProvider = ({ children }) => {
+  const [currPageState, setCurrPageState] = useState(PAGE_STATES.CREDENTIALS);
   const [selectedFile, setSelectedFile] = useState();
   const [mailList, setMailList] = useState(list);
 
@@ -54,6 +56,8 @@ const FileProvider = ({ children }) => {
     setSelectedFile,
     mailList,
     setMailList,
+    currPageState,
+    setCurrPageState,
   };
   return <FileContext.Provider value={value}>{children}</FileContext.Provider>;
 };

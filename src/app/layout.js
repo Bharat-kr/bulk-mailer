@@ -1,8 +1,5 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./Providers";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Bulk Mailer",
@@ -12,8 +9,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Providers>{children}</Providers>
+      <body>
+        <Providers>
+          <main className="flex min-h-screen flex-col items-center p-24 h-full">
+            <p className="text-3xl font-bold font-open-sans">Bulk ~ Mailer</p>
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   );
