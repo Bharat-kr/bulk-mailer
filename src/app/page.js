@@ -6,8 +6,6 @@ import Home from "@/components/Home";
 import { useFile } from "@/context/FileContext";
 import { PAGE_STATES } from "@/utils/enums";
 import axios from "axios";
-import { redirect } from "next/navigation";
-import { useEffect, useState } from "react";
 
 const name_to_component = {
   [PAGE_STATES.HOME]: <Home />,

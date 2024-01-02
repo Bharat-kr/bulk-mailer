@@ -7,9 +7,6 @@ import { nanoid } from "nanoid";
 import redisHelper from "@/helpers/redis";
 import generateRedisKeyNames from "@/utils/redisKeyNames";
 
-// //templates
-// import ContactTemplate from "../../../emails/ContactTemplate";
-
 export async function POST(req) {
   try {
     let { email, password, leads, template } = await req.json();
