@@ -7,9 +7,12 @@ import csv from "csvtojson";
 const FileContext = createContext();
 
 const FileProvider = ({ children }) => {
-  const [currPageState, setCurrPageState] = useState(PAGE_STATES.EDITOR);
+  const [currPageState, setCurrPageState] = useState(PAGE_STATES.HOME);
   const [selectedFile, setSelectedFile] = useState();
   const [mailList, setMailList] = useState([]);
+  const [mailTemplate, setMailTemplate] = useState(
+    "<h1>Hello from CKEditor in Next.js!</h1>"
+  );
   const [creds, setCreds] = useState({
     email: "",
     password: "",
@@ -65,6 +68,8 @@ const FileProvider = ({ children }) => {
     currPageState,
     setSelectedFile,
     setCurrPageState,
+    mailTemplate,
+    setMailTemplate,
   };
   return <FileContext.Provider value={value}>{children}</FileContext.Provider>;
 };

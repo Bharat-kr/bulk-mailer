@@ -6,6 +6,7 @@ import Home from "@/components/Home";
 import { useFile } from "@/context/FileContext";
 import { PAGE_STATES } from "@/utils/enums";
 import axios from "axios";
+import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const name_to_component = {
@@ -16,9 +17,8 @@ const name_to_component = {
 };
 
 export default function Page() {
-  const { setCurrPageState, setMailList, currPageState } = useFile();
-
-  const [taskId, setTaskId] = useState("");
+  const { setCurrPageState, mailList, currPageState, creds, mailTemplate } =
+    useFile();
 
   const nextHandler = async () => {
     let keys = Object.values(PAGE_STATES);
@@ -28,6 +28,17 @@ export default function Page() {
       setCurrPageState(keys[curr_index + 1]);
     } else {
       //Finally create Task & navigate to task page
+      try {
+        const result = await axios.post("/api/email", {
+          ...creds,
+          template: mailTemplate,
+          leads: mailList,
+        });
+        console.log(result);
+        window.location.href = `/tasks/${result.data.task_id}`;
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 

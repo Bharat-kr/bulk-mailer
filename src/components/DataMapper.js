@@ -7,11 +7,13 @@ export default function DataMapper() {
   const [keys, setKeys] = useState([]);
 
   useEffect(() => {
-    let arr = [];
-    Object.keys(mailList[0]).forEach((key) => {
-      arr.push(key);
-    });
-    setKeys(arr);
+    if (mailList.length > 0) {
+      let arr = [];
+      Object.keys(mailList[0]).forEach((key) => {
+        arr.push(key);
+      });
+      setKeys(arr);
+    }
   }, [mailList]);
 
   return (
@@ -20,7 +22,7 @@ export default function DataMapper() {
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              {keys.map((key) => {
+              {keys?.map((key) => {
                 return (
                   <th key={key} scope="col" className="px-6 py-3">
                     {key}
@@ -30,7 +32,7 @@ export default function DataMapper() {
             </tr>
           </thead>
           <tbody>
-            {mailList.map((item, idx) => {
+            {mailList?.map((item, idx) => {
               return (
                 <tr
                   key={JSON.stringify(item) + `${idx}`}

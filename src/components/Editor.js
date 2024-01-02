@@ -1,14 +1,25 @@
+"use client";
 import React from "react";
 
+import dynamic from "next/dynamic";
+import { useFile } from "@/context/FileContext";
+
+const CustomEditor = dynamic(
+  () => {
+    return import("../components/custom-editor");
+  },
+  { ssr: false }
+);
+
 const Editor = () => {
-  const [content, setContent] = React.useState("<Html lang='en'></Html");
+  const { mailTemplate, setMailTemplate } = useFile();
   return (
-    <div className="w-full border border-1 rounded-2xl border-blue-500 p-4 flex">
-      <div className="w-1/2">
-      
-      </div>
-      <div className="w-1/2"></div>
-    </div>
+    <CustomEditor
+      initialData={mailTemplate}
+      onChange={(val) => {
+        setMailTemplate(val);
+      }}
+    />
   );
 };
 

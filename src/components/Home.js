@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <label
       htmlFor="dropzone-file"
-      className="mx-auto cursor-pointer flex w-full max-w-lg flex-col items-center rounded-xl border-2 border-dashed border-gray-200 p-6 text-center"
+      className="mx-auto cursor-pointer flex w-full max-w-lg flex-col items-center rounded-xl border-2 border-dashed border-blue-700 dark:border-gray-200 p-6 text-center"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ const Home = () => {
         />
       </svg>
 
-      <h2 className="mt-4 text-xl font-medium text-white tracking-wide">
+      <h2 className="mt-4 text-xl font-medium text-blue-500 dark:text-white tracking-wide">
         CSV File
       </h2>
 

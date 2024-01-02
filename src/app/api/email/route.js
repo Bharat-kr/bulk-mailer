@@ -1,6 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import nodemailer from "nodemailer";
-import { render } from "@react-email/render";
 import { NextResponse } from "next/server";
 import { nanoid } from "nanoid";
 
@@ -8,15 +7,15 @@ import { nanoid } from "nanoid";
 import redisHelper from "@/helpers/redis";
 import generateRedisKeyNames from "@/utils/redisKeyNames";
 
-//templates
-import ContactTemplate from "../../../emails/ContactTemplate";
+// //templates
+// import ContactTemplate from "../../../emails/ContactTemplate";
 
 export async function POST(req) {
   try {
-    let { email, password, leads } = await req.json();
+    let { email, password, leads, template } = await req.json();
 
     const task_id = nanoid();
-    
+
     leads = leads.map((element) => {
       element.send_completed = false;
       return element;
@@ -52,13 +51,7 @@ export async function POST(req) {
           from: email, // sender address
           to: lead.email,
           subject: `Message from - ${lead.name}`, // Subject line
-          html: render(
-            ContactTemplate({
-              name: lead.name,
-              email: lead.email,
-              message: "message",
-            })
-          ),
+          html: template,
         };
         await transporter.sendMail(mailOptions);
         leads[currentLeadIndex].send_completed = true;
