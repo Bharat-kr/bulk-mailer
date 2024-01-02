@@ -7,9 +7,13 @@ import csv from "csvtojson";
 const FileContext = createContext();
 
 const FileProvider = ({ children }) => {
-  const [currPageState, setCurrPageState] = useState(PAGE_STATES.CREDENTIALS);
+  const [currPageState, setCurrPageState] = useState(PAGE_STATES.EDITOR);
   const [selectedFile, setSelectedFile] = useState();
-  const [mailList, setMailList] = useState(list);
+  const [mailList, setMailList] = useState([]);
+  const [creds, setCreds] = useState({
+    email: "",
+    password: "",
+  });
 
   useEffect(() => {
     const init = async () => {
@@ -38,6 +42,7 @@ const FileProvider = ({ children }) => {
 
             console.log(toJson);
             setMailList(toJson);
+            setCurrPageState(PAGE_STATES.LIST);
           });
       };
 
@@ -52,11 +57,13 @@ const FileProvider = ({ children }) => {
   }, [selectedFile]);
 
   const value = {
-    selectedFile,
-    setSelectedFile,
+    creds,
+    setCreds,
     mailList,
     setMailList,
+    selectedFile,
     currPageState,
+    setSelectedFile,
     setCurrPageState,
   };
   return <FileContext.Provider value={value}>{children}</FileContext.Provider>;

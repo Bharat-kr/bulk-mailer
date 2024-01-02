@@ -1,8 +1,10 @@
 import { useFile } from "@/context/FileContext";
+import { PAGE_STATES } from "@/utils/enums";
+import { redirect } from "next/navigation";
 import React from "react";
 
 const Home = () => {
-  const { setSelectedFile } = useFile();
+  const { setSelectedFile, setCurrPageState } = useFile();
   return (
     <label
       htmlFor="dropzone-file"
