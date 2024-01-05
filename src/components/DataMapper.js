@@ -1,9 +1,10 @@
 "use client";
 import { useFile } from "@/context/FileContext";
+import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 
 export default function DataMapper() {
-  const { mailList } = useFile();
+  const { mailList, setMailList } = useFile();
   const [keys, setKeys] = useState([]);
 
   useEffect(() => {
@@ -24,7 +25,7 @@ export default function DataMapper() {
             <tr>
               {keys?.map((key) => {
                 return (
-                  <th key={key} scope="col" className="px-6 py-3">
+                  <th key={`${nanoid()}`} scope="col" className="px-6 py-3">
                     {key}
                   </th>
                 );
@@ -35,7 +36,7 @@ export default function DataMapper() {
             {mailList?.map((item, idx) => {
               return (
                 <tr
-                  key={JSON.stringify(item) + `${idx}`}
+                  key={`${nanoid()}`}
                   className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
                 >
                   {keys.map((key) => {
@@ -44,7 +45,7 @@ export default function DataMapper() {
                       case "boolean":
                         return (
                           <td
-                            key={item[key]}
+                            key={`${nanoid()}`}
                             className="px-6 py-4 flex justify-center"
                           >
                             {!!val ? (
@@ -79,7 +80,10 @@ export default function DataMapper() {
                         );
                       default:
                         return (
-                          <td key={item[key]} className="px-6 py-4">
+                          <td
+                            key={`${nanoid()}`}
+                            className="px-6 py-4 outline-none"
+                          >
                             {val}
                           </td>
                         );
