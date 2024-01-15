@@ -34,7 +34,7 @@ export default function DataMapper() {
               {keys?.map((key) => {
                 return (
                   <th key={`${nanoid()}`} scope="col" className="px-6 py-3">
-                    {key}
+                    {cleanString(key)}
                   </th>
                 );
               })}

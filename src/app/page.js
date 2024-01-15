@@ -51,14 +51,23 @@ export default function Page() {
     <>
       {name_to_component[currPageState]}
       <div className="flex items-center justify-center w-full mt-4">
-        {PAGE_STATES.HOME != currPageState && (
+        {PAGE_STATES.HOME != currPageState ? (
           <button
             type="button"
             onClick={nextHandler}
-            className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-full text-lg px-5 py-2.5 text-center mb-2"
+            className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-full text-lg px-5 py-2.5 text-center mb-2 w-48"
           >
             Next
           </button>
+        ) : (
+          <p className="text-center text-sm">
+            This service uses the gmail for sending mail and will ask you to put
+            your app password for working , also as gmail limits the sending of
+            bulk mails this keep a 5 minute delay for sending mails so, do not
+            try this service to send emails for more than 50 mails a day as it
+            may give unexpected delivery issues or might land your mails in
+            spams.
+          </p>
         )}
       </div>
     </>

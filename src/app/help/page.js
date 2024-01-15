@@ -3,8 +3,10 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="flex flex-col gap-3 items-start">
-      <h1 className="text-3xl font-bold">Creating an app password for Gmail</h1>
+    <div className="flex flex-col gap-3 items-start px-4 mb-10">
+      <h1 className="text-3xl font-bold text-center w-full">
+        Creating an app password for Gmail
+      </h1>
       <p className="text-lg">
         What you'll need: To create an app password, you'll need a valid Gmail
         account. I'll assume you do have 2FA enabled and are looking to connect
@@ -17,8 +19,15 @@ const page = () => {
       </p>
       <h2 className="text-2xl font-bold">2. Go to My Account/App Passwords</h2>
       <p className="text-lg">
-        Point your web browser to https://myaccount.google.com/apppasswords.
-        Even though you just logged in to your account, you'll most likely be
+        Point your web browser to{" "}
+        <a
+          href="https://myaccount.google.com/apppasswords"
+          target="_blank"
+          className="hover:underline text-blue-900"
+        >
+          https://myaccount.google.com/apppasswords
+        </a>
+        . Even though you just logged in to your account, you'll most likely be
         prompted to type your account password again.
       </p>
       <h2 className="text-2xl font-bold">3. Create your first app password</h2>
@@ -29,13 +38,14 @@ const page = () => {
       <Image
         src="/app_password.png"
         alt="App password image"
-        className="w-full"
         width={500}
         height={100}
         style={{
-          width: "100%",
+          width: "70%",
           height: "auto",
+          alignSelf: "center",
         }}
+
         // placeholder="blur"
       />
       <h2 className="text-2xl font-bold"> 4. Copy your new app password</h2>

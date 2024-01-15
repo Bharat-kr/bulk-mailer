@@ -12,7 +12,9 @@ export default function RootLayout({ children }) {
       <body>
         <Providers>
           <main className="flex min-h-screen flex-col items-center px-24 py-8 h-full">
-            <p className="text-3xl font-rubik-burned mb-8">Mail Bomber</p>
+            <p className="text-5xl text-blue-600 font-rubik-burned mb-8 font-bold dark:text-white">
+              Mail Bomber
+            </p>
             {children}
           </main>
         </Providers>

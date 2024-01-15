@@ -11,7 +11,6 @@ import { htmlReplace } from "@/helpers/email/html";
 export async function POST(req) {
   try {
     let { email, password, leads, template, subject } = await req.json();
-    console.log({ email, password, leads, template, subject });
     const task_id = nanoid();
 
     leads = leads.map((element) => {
@@ -68,7 +67,7 @@ export async function POST(req) {
       } else {
         clearInterval(intervalId); // Stop the interval when all leads are processed
       }
-    }, 30 * 1000);
+    }, 5*60 * 1000);
 
     return NextResponse.json(
       { msg: "All Scheduled", leads, task_id },

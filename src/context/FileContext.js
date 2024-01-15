@@ -14,7 +14,7 @@ const FileProvider = ({ children }) => {
   const [variables, setVariables] = useState([]);
   const [mailList, setMailList] = useState(list);
   const [mailTemplate, setMailTemplate] = useState(
-    "<h1>Hello from CKEditor in Next.js!</h1>"
+    "<h1>Hello from Mail Bomber!</h1>"
   );
   const [creds, setCreds] = useState({
     email: "",
