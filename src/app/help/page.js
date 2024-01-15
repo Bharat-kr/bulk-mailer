@@ -44,9 +44,8 @@ const page = () => {
           width: "70%",
           height: "auto",
           alignSelf: "center",
+          borderRadius: "10px",
         }}
-
-        // placeholder="blur"
       />
       <h2 className="text-2xl font-bold"> 4. Copy your new app password</h2>
       <p className="text-lg">

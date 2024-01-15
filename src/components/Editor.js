@@ -250,7 +250,7 @@ const Editor = () => {
       </div>
       <div
         id="template_editor_update"
-        className="input h-[400px] overflow-auto"
+        className="input h-[400px] overflow-auto bg-white"
         ref={emailBodyRef}
         dir="ltr"
       />

@@ -1,9 +1,13 @@
 import "./globals.css";
 import { Providers } from "./Providers";
+import localFont from "next/font/local";
+
+// Font files can be colocated inside of `pages`
+const myFont = localFont({ src: "../../public/BungeeSpice-Regular.ttf" });
 
 export const metadata = {
-  title: "Bulk Mailer",
-  description: "Send Bulk Mails at once",
+  title: "Mail Bomber",
+  description: "A mail scheduler",
 };
 
 export default function RootLayout({ children }) {
@@ -12,9 +16,11 @@ export default function RootLayout({ children }) {
       <body>
         <Providers>
           <main className="flex min-h-screen flex-col items-center px-24 py-8 h-full">
-            <p className="text-5xl text-blue-600 font-rubik-burned mb-8 font-bold dark:text-white">
+            <h1
+              className={`text-5xl text-blue-600 mb-8 dark:text-white ${myFont.className}`}
+            >
               Mail Bomber
-            </p>
+            </h1>
             {children}
           </main>
         </Providers>

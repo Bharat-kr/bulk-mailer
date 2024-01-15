@@ -23,10 +23,10 @@ const Home = () => {
         />
       </svg>
 
-      <h2 className="mt-4 text-xl font-medium  tracking-wide">CSV File</h2>
+      <h2 className="mt-4 text-xl font-medium tracking-wide">CSV File</h2>
 
       <p className="mt-2 tracking-wide">
-        Upload or darg & drop your file SVG, PNG, JPG or GIF.{" "}
+        Upload or darg & drop your csv file.{" "}
       </p>
 
       <input
