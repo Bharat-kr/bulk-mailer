@@ -1,5 +1,6 @@
 "use client";
 const { createContext, useContext, useState, useEffect } = require("react");
+import { cleanString } from "@/utils/cleanString";
 import { list } from "@/utils/dummy_data";
 import { PAGE_STATES } from "@/utils/enums";
 import csv from "csvtojson";
@@ -7,8 +8,10 @@ import csv from "csvtojson";
 const FileContext = createContext();
 
 const FileProvider = ({ children }) => {
-  const [currPageState, setCurrPageState] = useState(PAGE_STATES.EDITOR);
+  const [currPageState, setCurrPageState] = useState(PAGE_STATES.HOME);
   const [selectedFile, setSelectedFile] = useState();
+  const [subject, setSubject] = useState("");
+  const [variables, setVariables] = useState([]);
   const [mailList, setMailList] = useState(list);
   const [mailTemplate, setMailTemplate] = useState(
     "<h1>Hello from CKEditor in Next.js!</h1>"
@@ -17,7 +20,6 @@ const FileProvider = ({ children }) => {
     email: "",
     password: "",
   });
-
   useEffect(() => {
     const init = async () => {
       const reader = new FileReader();
@@ -70,6 +72,10 @@ const FileProvider = ({ children }) => {
     setCurrPageState,
     mailTemplate,
     setMailTemplate,
+    variables,
+    setVariables,
+    subject,
+    setSubject,
   };
   return <FileContext.Provider value={value}>{children}</FileContext.Provider>;
 };

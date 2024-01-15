@@ -6,11 +6,12 @@ import { nanoid } from "nanoid";
 //utils and helpers
 import redisHelper from "@/helpers/redis";
 import generateRedisKeyNames from "@/utils/redisKeyNames";
+import { htmlReplace } from "@/helpers/email/html";
 
 export async function POST(req) {
   try {
-    let { email, password, leads, template } = await req.json();
-
+    let { email, password, leads, template, subject } = await req.json();
+    console.log({ email, password, leads, template, subject });
     const task_id = nanoid();
 
     leads = leads.map((element) => {
@@ -47,8 +48,8 @@ export async function POST(req) {
         const mailOptions = {
           from: email, // sender address
           to: lead.email,
-          subject: `Message from - ${lead.name}`, // Subject line
-          html: template,
+          subject: subject, // Subject line
+          html: htmlReplace(template, lead),
         };
         await transporter.sendMail(mailOptions);
         leads[currentLeadIndex].send_completed = true;

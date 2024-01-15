@@ -1,6 +1,4 @@
 import { useFile } from "@/context/FileContext";
-import { PAGE_STATES } from "@/utils/enums";
-import { redirect } from "next/navigation";
 import React from "react";
 
 const Home = () => {
@@ -8,11 +6,11 @@ const Home = () => {
   return (
     <label
       htmlFor="dropzone-file"
-      className="mx-auto cursor-pointer flex w-full max-w-lg flex-col items-center rounded-xl border-2 border-dashed border-blue-700 dark:border-gray-200 p-6 text-center"
+      className="mx-auto my-auto cursor-pointer flex w-full max-w-lg flex-col items-center rounded-xl border-2 border-dashed border-blue-700 dark:border-gray-200 p-6 text-center text-blue-500 dark:text-gray-500"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-10 text-blue-500"
+        className="h-10 w-10"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -25,11 +23,9 @@ const Home = () => {
         />
       </svg>
 
-      <h2 className="mt-4 text-xl font-medium text-blue-500 dark:text-white tracking-wide">
-        CSV File
-      </h2>
+      <h2 className="mt-4 text-xl font-medium  tracking-wide">CSV File</h2>
 
-      <p className="mt-2 text-blue-500 tracking-wide">
+      <p className="mt-2 tracking-wide">
         Upload or darg & drop your file SVG, PNG, JPG or GIF.{" "}
       </p>
 

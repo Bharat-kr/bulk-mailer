@@ -3,12 +3,13 @@ import DataMapper from "@/components/DataMapper";
 import Loading from "@/components/Loading";
 import RefreshButton from "@/components/RefreshButton";
 import { useFile } from "@/context/FileContext";
+import { statusAll } from "@/utils/statusAll";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const Page = ({ params }) => {
   const { task_id } = params;
-  const { setMailList } = useFile();
+  const { setMailList, mailList } = useFile();
   const [loading, setLoading] = useState(false);
 
   const getStatus = async () => {
@@ -29,10 +30,14 @@ const Page = ({ params }) => {
 
   useEffect(() => {
     const interval = setInterval(async () => {
-      await getStatus();
-    }, 5 * 6 * 1000);
+      if (!statusAll(mailList)) {
+        await getStatus();
+      } else {
+        clearInterval(interval);
+      }
+    }, 5 * 60 * 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [mailList]);
 
   return (
     <div className="w-full">

@@ -1,18 +1,26 @@
 "use client";
 import { useFile } from "@/context/FileContext";
+import { cleanString } from "@/utils/cleanString";
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 
 export default function DataMapper() {
-  const { mailList, setMailList } = useFile();
+  const { mailList, setMailList, setVariables } = useFile();
   const [keys, setKeys] = useState([]);
 
   useEffect(() => {
     if (mailList.length > 0) {
       let arr = [];
+      let vars = [];
       Object.keys(mailList[0]).forEach((key) => {
         arr.push(key);
+        vars.push({
+          label: cleanString(key),
+          value: key,
+        });
       });
+      console.log(vars);
+      setVariables(vars);
       setKeys(arr);
     }
   }, [mailList]);

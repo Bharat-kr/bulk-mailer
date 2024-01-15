@@ -25,10 +25,7 @@ const Credentials = () => {
         />
       </div>
       <div className="mb-6">
-        <label
-          htmlFor="password"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >
+        <label htmlFor="password" className="label">
           Password
         </label>
         <input
