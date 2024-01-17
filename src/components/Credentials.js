@@ -43,7 +43,7 @@ const Credentials = () => {
           required
         />
       </div>
-      <p className="flex gap-4 items-center">
+      <p className="flex gap-4 items-center font-colour">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"

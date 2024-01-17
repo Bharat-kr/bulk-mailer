@@ -3,6 +3,7 @@ import Credentials from "@/components/Credentials";
 import DataMapper from "@/components/DataMapper";
 import Editor from "@/components/Editor";
 import Home from "@/components/Home";
+import ThemeToggle from "@/components/ThemeToggle";
 import { useFile } from "@/context/FileContext";
 import { PAGE_STATES } from "@/utils/enums";
 import axios from "axios";
@@ -49,6 +50,7 @@ export default function Page() {
 
   return (
     <>
+      <ThemeToggle />
       {name_to_component[currPageState]}
       <div className="flex items-center justify-center w-full mt-4">
         {PAGE_STATES.HOME != currPageState ? (
@@ -60,7 +62,7 @@ export default function Page() {
             Next
           </button>
         ) : (
-          <p className="text-center text-sm">
+          <p className="text-center text-sm font-colour">
             This service uses the gmail for sending mail and will ask you to put
             your app password for working , also as gmail limits the sending of
             bulk mails this keep a 5 minute delay for sending mails so, do not

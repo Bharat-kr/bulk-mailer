@@ -13,9 +13,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-gradient-to-br from-[#FFDEE9] to-[#B5FFFC] dark:from-[#03071e] dark:to-[#000814]">
         <Providers>
-          <main className="flex min-h-screen flex-col items-center px-24 py-8 h-full">
+          <main className="flex min-h-screen flex-col items-center px-12 md:px-24 py-8 h-full">
             <h1
               className={`text-5xl text-blue-600 mb-8 dark:text-white ${myFont.className}`}
             >

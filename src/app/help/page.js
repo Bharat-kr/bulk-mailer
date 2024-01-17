@@ -1,9 +1,11 @@
+import ThemeToggle from "@/components/ThemeToggle";
 import Image from "next/image";
 import React from "react";
 
 const page = () => {
   return (
-    <div className="flex flex-col gap-3 items-start px-4 mb-10">
+    <div className="flex flex-col gap-3 items-start px-4 mb-10 font-colour">
+      <ThemeToggle />
       <h1 className="text-3xl font-bold text-center w-full">
         Creating an app password for Gmail
       </h1>

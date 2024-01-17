@@ -3,7 +3,7 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: #FFDEE9;
   --background-end-rgb: #B5FFFC ;
@@ -15,7 +15,6 @@
     --background-start-rgb: #03071e;
     --background-end-rgb:#000814;
   }
-
 }
 
 body {
@@ -26,14 +25,17 @@ body {
       var(--background-end-rgb)
     )
     ;
-}
+} */
 
 
 @layer components {
   .input {
-    @apply border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white outline-none ;
+    @apply border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-white placeholder-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white outline-none ;
   }
   .label{
     @apply block mb-2 text-lg font-medium text-gray-900 dark:text-white;
+  }
+  .font-colour{
+    @apply text-black dark:text-gray-400;
   }
 }

@@ -144,7 +144,7 @@ const Editor = () => {
 
   return (
     <div className="flex flex-col w-full gap-2">
-      <h5 className="font-bold text-xl">Subject</h5>
+      <h5 className="label font-bold text-xl">Subject</h5>
       <input
         className="input"
         value={subject}
@@ -154,11 +154,11 @@ const Editor = () => {
         }}
       />
       <div className="w-full flex justify-between">
-        <h5 className="font-bold text-xl">Body</h5>
+        <h5 className="label font-bold text-xl">Body</h5>
         <div className={`flex items-center gap-4 relative`}>
           <div className="relative">
             <svg
-              className="cursor-pointer h-5 w-5 text-gray-400"
+              className="cursor-pointer h-5 w-5 dark:text-gray-400"
               onClick={() => handlePickerSelection("emoji")}
               xmlns="http://www.w3.org/2000/svg"
               version="1.1"
@@ -197,7 +197,7 @@ const Editor = () => {
 
           <div className="relative">
             <svg
-              className="cursor-pointer h-6 w-6 text-gray-400"
+              className="cursor-pointer h-6 w-6 dark:text-gray-400"
               onClick={() => handlePickerSelection("variable")}
               xmlns="http://www.w3.org/2000/svg"
               version="1.1"
@@ -250,7 +250,7 @@ const Editor = () => {
       </div>
       <div
         id="template_editor_update"
-        className="input h-[400px] overflow-auto bg-white"
+        className="input h-[400px] overflow-auto"
         ref={emailBodyRef}
         dir="ltr"
       />

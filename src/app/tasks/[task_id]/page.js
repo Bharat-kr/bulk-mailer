@@ -2,6 +2,7 @@
 import DataMapper from "@/components/DataMapper";
 import Loading from "@/components/Loading";
 import RefreshButton from "@/components/RefreshButton";
+import ThemeToggle from "@/components/ThemeToggle";
 import { useFile } from "@/context/FileContext";
 import { statusAll } from "@/utils/statusAll";
 import axios from "axios";
@@ -41,8 +42,9 @@ const Page = ({ params }) => {
 
   return (
     <div className="w-full">
+      <ThemeToggle />
       <div className="w-full flex items-center justify-end gap-4  mb-6">
-        <p className="flex items-center justify-center px-2 py-1 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+        <p className="flex items-center justify-center px-2 py-1 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 font-colour">
           {loading
             ? "Please wait updating the progress..."
             : "The data will get Refreshed every 5 mins :)"}
