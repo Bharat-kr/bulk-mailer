@@ -10,9 +10,9 @@ const page = () => {
         Creating an app password for Gmail
       </h1>
       <p className="text-lg">
-        What you'll need: To create an app password, you'll need a valid Gmail
-        account. I'll assume you do have 2FA enabled and are looking to connect
-        an app to Gmail.
+        What you&apos;ll need: To create an app password, you&apos;ll need a
+        valid Gmail account. I&apos;ll assume you do have 2FA enabled and are
+        looking to connect an app to Gmail.
       </p>
       <h2 className="text-2xl font-bold">1. Log in to your Google account</h2>
       <p className="text-lg">
@@ -29,8 +29,8 @@ const page = () => {
         >
           https://myaccount.google.com/apppasswords
         </a>
-        . Even though you just logged in to your account, you'll most likely be
-        prompted to type your account password again.
+        . Even though you just logged in to your account, you&apos;ll most
+        likely be prompted to type your account password again.
       </p>
       <h2 className="text-2xl font-bold">3. Create your first app password</h2>
       <p className="text-lg">
