@@ -1,12 +1,17 @@
 "use client";
 import Credentials from "@/components/Credentials";
 import DataMapper from "@/components/DataMapper";
-import Editor from "@/components/Editor";
+// import Editor from "@/components/Editor";
 import Home from "@/components/Home";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useFile } from "@/context/FileContext";
 import { PAGE_STATES } from "@/utils/enums";
 import axios from "axios";
+import dynamic from "next/dynamic.js";
+
+let Editor = dynamic(() => import("../components/Editor.js"), {
+  ssr: false,
+});
 
 const name_to_component = {
   [PAGE_STATES.HOME]: <Home />,
