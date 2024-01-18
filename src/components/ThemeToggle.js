@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 const ThemeToggle = () => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(null);
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");
@@ -14,17 +14,19 @@ const ThemeToggle = () => {
   }, []);
 
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+    if (darkMode != null) {
+      if (darkMode) {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
     }
   }, [darkMode]);
   return (
     <div
-      className="absolute top-14 right-10 sm:top-10 sm:right-8 md:top-10 md:right-10 cursor-pointer"
+      className="fixed z-10 top-14 right-10 sm:top-10 sm:right-8 md:top-10 md:right-10 cursor-pointer"
       onClick={() => {
         setDarkMode(!darkMode);
       }}
